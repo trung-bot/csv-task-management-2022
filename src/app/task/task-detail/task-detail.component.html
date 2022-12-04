@@ -1,0 +1,56 @@
+<div *ngIf="task$ | async as task" fxFill fxLayout="row" style="padding: 20px 15%;">
+    <div fxFlex fxLayout='row' fxLayoutGap="24px">
+        <div fxFlex="70">
+            <mat-card style="height: 100%;">
+                <mat-card-content>
+                    <div fxFlex fxLayout='column'>
+                        <div fxLayout="row" fxLayoutAlign="space-between center" >
+                            <div class="task-name">{{task.Name}}</div>
+                            <button mat-raised-button *ngIf="!task.Completed" color="primary" (click)="onComplete(task.Id)">Complete Task</button>
+                        </div>
+                        <h2>Description</h2>
+                        <div>{{task.Description}}</div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+        <div fxFlex="30" style="height: 100%;">
+            <mat-card style="padding: 0 !important">
+                <mat-toolbar [class.completed-task]= "task.Completed" >
+                    Details
+                </mat-toolbar>
+                <mat-card-content style="padding: 16px" fxLayout='column' fxLayoutGap="28px">
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px" class="field-detail">
+                        <div class="label-field"fxFlex='30'>Assignee</div>
+                        <div class="value-field" fxFlex='70'>
+                            <button class="value-assignee" [matMenuTriggerFor]="selectAssignee" fxFLex mat-button (click)="onGetAssignees()">{{task.Assignee.Name}}</button>
+                            <mat-menu #selectAssignee="matMenu">
+                                <button *ngFor="let assignee of allAssignee" mat-menu-item (click)="onAssign(task.Id, assignee.Id)">{{assignee.Name}}</button>
+                            </mat-menu>
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" class="field-detail" fxLayoutAlign="start center" fxLayoutGap="8px">
+                        <div class="label-field" fxFlex='30'>Status</div>
+                        <div class="value-field">
+                            {{task.Completed ? 'Completed' : 'Not Completed'}}
+                        </div>
+                    </div>
+
+                    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px" class="field-detail">
+                        <div class="label-field" fxFlex='30'>Created Date</div>
+                        <div class="value-field">
+                            {{task.CreatedDate | date: 'dd-MM-yyyy'}}
+                        </div>
+                    </div>
+
+                    
+                </mat-card-content>
+            </mat-card>
+        </div>
+        
+          
+    </div>
+    
+</div>

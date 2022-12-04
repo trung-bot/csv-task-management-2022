@@ -1,0 +1,59 @@
+/* You can add global styles to this file, and also import other style files */
+
+ /* make mat-option list below the select field */
+.mat-select-panel {
+    transform: translate(-2px, 44px) !important;
+    font-family: Lato,sans-serif;
+  }
+
+.label-field {
+    color: #42526e;
+    font-size: 16px;
+}
+
+:host{
+  padding: 0;
+  margin: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.value-field {
+  font-size: 16px;
+}
+.add-edit-task-dialog .mat-dialog-container {
+  padding: 0;
+}
+
+.text-center{
+  text-align: center !important;
+}
+
+.text-link:hover {
+  cursor: pointer;
+}
+
+#block-ui {
+  position: absolute;
+  left: 0;
+  top:0;
+  right:0;
+  bottom: 0;
+  z-index: 9999;
+  display: block;
+}
+#block-ui mat-spinner{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+}
+
+button.mat-fab-bottom {
+  position: absolute;
+  float: right;
+  right: 32px;
+  bottom: 32px;
+  z-index: 1;
+}

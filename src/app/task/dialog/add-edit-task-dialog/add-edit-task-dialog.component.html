@@ -1,0 +1,41 @@
+<div fxFill fxLayout="column">
+    <mat-toolbar color="primary" >
+        <button mat-icon-button (click)="onClose()">
+            <mat-icon>close</mat-icon>
+          </button>
+        <div fxFlex>{{title}}</div>
+        <button mat-button (click)="onSave()"> <mat-icon>add_task</mat-icon></button>
+    </mat-toolbar>
+    <div fxFlex style="padding: 24px;">
+        <form [formGroup]="taskForm" fxLayout="column" fxLayoutGap="16px">
+            <mat-form-field fxFlex>
+                <input matInput type="text" placeholder="Name*" formControlName="Name">
+                <mat-error *ngIf="taskForm?.get('Name').hasError('required')">
+                    <div>{{"You must input mandatory fields (*)"}}</div>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex>
+                <mat-label>Description*</mat-label>
+                <textarea matInput #DescriptionTextArea maxlength="4000" cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="10"
+                formControlName="Description"></textarea>
+                <mat-error *ngIf="taskForm?.get('Name').hasError('required')">
+                    <div>{{"You must input mandatory fields (*)"}}</div>
+                </mat-error>
+              </mat-form-field>
+            <mat-form-field fxFlex >
+                <mat-label>Assignee*</mat-label>
+                <mat-select formControlName="Assignee">
+                  <mat-option *ngFor="let assignee of allAssignee" [value]="assignee">
+                    {{assignee.Name}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="taskForm?.get('Name').hasError('required')">
+                    <div>{{"You must input mandatory fields (*)"}}</div>
+                </mat-error>
+
+            </mat-form-field>
+           
+        </form>
+    </div>
+</div>

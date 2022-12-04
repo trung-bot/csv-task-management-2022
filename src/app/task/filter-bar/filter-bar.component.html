@@ -1,0 +1,35 @@
+<div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="20px">
+    <mat-form-field>
+        <input matInput [(ngModel)]='seachText' (keyup.enter)="onSearch()" placeholder="Search" id="search-input" name="search-input">
+        <button mat-icon-button matSuffix  [style.visibility]="seachText ? 'visible' : 'hidden'" (click)="onClearSearch()">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <div>
+        <button mat-raised-button [matMenuTriggerFor]="selectIsCompleted"> 
+            {{filterStausTitle}}
+            <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #selectIsCompleted="matMenu">
+            <button mat-menu-item (click)="onFilterStatus('All')">All</button>
+            <button mat-menu-item (click)="onFilterStatus('Completed')">Completed</button>
+            <button mat-menu-item (click)="onFilterStatus('NotCompleted')">Not Completed</button>
+        </mat-menu>
+    </div>
+
+    <div>
+        <button mat-raised-button [matMenuTriggerFor]="selectAssignee" (click)="getAllAssignee()"> 
+            {{filterAssigneeTitle}}
+            <mat-icon>arrow_drop_down</mat-icon>
+        </button>
+        <mat-menu #selectAssignee="matMenu">
+            <mat-selection-list [(ngModel)]="selectedAssignee" (focusout)="onFilterAssignee()" color="primary">
+                <mat-list-option *ngFor="let assignee of allAssignee" (click)="selecAssignee($event)" [value]="assignee">
+                  {{assignee.Name}}
+                </mat-list-option>
+              </mat-selection-list>
+        </mat-menu>
+    </div>
+    
+</div >

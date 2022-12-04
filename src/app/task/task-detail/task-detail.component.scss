@@ -1,0 +1,18 @@
+.task-name{
+    font-size: 40px;
+    font-weight: 600;
+}
+.value-field {
+    padding: 8;
+    button.value-assignee{
+        width: 100%;
+        text-align: left;
+        padding: 2px;
+    }
+}
+.field-detail {
+    height: 40px;
+}
+.completed-task{
+    background-color: rgb(227,252,239);
+}

@@ -1,0 +1,9 @@
+<app-filter-bar
+    (filterChanges) = "refreshListTasks($event)">
+</app-filter-bar>
+
+<app-task-list #taskList></app-task-list>
+
+<button mat-fab class="mat-fab-bottom custom-btn" color='primary' onclick="this.blur()" (click)="onAddNewTask()">
+    <mat-icon aria-label="Add">add</mat-icon>
+</button>
